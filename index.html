@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Визитка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Верхняя вуаль: под шапкой всегда черное, плавно затемняется сверху вниз -->
+  <div class="fixed-top-shade" aria-hidden="true"></div>
+
+  <!-- Фиксированная шапка: логотип слева, никнейм ALT по центру -->
+  <header class="site-header-fixed">
+    <div class="logo-box">
+      <img src="logo.png" alt="Logo" class="site-logo" width="160" height="164">
+    </div>
+
+    <!-- Никнейм ALT по центру шапки (шрифт Orbitron) -->
+    <div class="header-nickname">
+      <span class="nickname-text">ALT</span>
+    </div>
+  </header>
+
+  <!-- Первый экран: исходное видео без затемнений внизу, быстро затемняется при скролле -->
+  <div class="video-wrapper">
+    <!-- Фоновые видео -->
+    <video class="bg-video bg-video-desktop" autoplay muted loop playsinline preload="auto">
+      <source src="background.mp4" type="video/mp4">
+    </video>
+    <video class="bg-video bg-video-mobile" autoplay muted loop playsinline preload="auto">
+      <source src="background_mobile.mp4" type="video/mp4">
+    </video>
+
+    <!-- Затемняющая вуаль: активируется при скролле («уходит в темноту») -->
+    <div class="scroll-darkness-veil" id="scrollDarkness" aria-hidden="true"></div>
+
+    <!-- Список ссылок слева -->
+    <div class="links-container">
+      <nav class="links-list" aria-label="Контакты">
+        <a href="https://t.me/BSEpartner" class="gradient-box-link" target="_blank" rel="noopener noreferrer">
+          <span class="link-label">Telegram</span>
+          <span class="link-sub">@BSEpartner</span>
+        </a>
+
+        <a href="https://github.com/ved0miy-alt" class="gradient-box-link" target="_blank" rel="noopener noreferrer">
+          <span class="link-label">GitHub</span>
+          <span class="link-sub">github.com/ved0miy-alt</span>
+        </a>
+
+        <a href="mailto:m3114462@gmail.com" class="gradient-box-link">
+          <span class="link-label">Почта</span>
+          <span class="link-sub">m3114462@gmail.com</span>
+        </a>
+
+        <!-- Кнопка-заглушка про портфолио -->
+        <button type="button" class="gradient-box-link gradient-box-stub" id="heroPortfolioBtn" aria-label="Портфолио (в разработке)">
+          <div class="stub-title-row">
+            <span class="link-label">Портфолио</span>
+            <span class="stub-badge">скоро</span>
+          </div>
+          <span class="link-sub" id="heroPortfolioSub">в разработке</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Надпись Designed by внизу экрана (никогда не затемняется) -->
+    <div class="designed-by-container">
+      <div class="designed-by">
+        <span class="designed-label">Designed by</span>
+        <span class="glitch-wrapper" id="glitchAuthor" data-text="█▓▒░▓█▒░█" aria-label="Unknown">
+          <span class="glitch-text">█▓▒░▓█▒░█</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Секция под видео: терминал плавно появляется при скролле -->
+  <section class="scroll-content">
+    <!-- Узкая плашка терминала во всю длину; вывод открывается снизу -->
+    <div class="terminal-bar-full" id="terminalCard">
+      <!-- Верхняя узкая строка -->
+      <div class="terminal-main-row">
+        <div class="term-meta">
+          <div class="terminal-controls">
+            <span class="term-dot"></span>
+            <span class="term-dot"></span>
+            <span class="term-dot"></span>
+          </div>
+          <span class="terminal-tag">terminal ~ zsh</span>
+        </div>
+
+        <div class="term-main-input">
+          <span class="term-prompt">&gt;</span>
+          <input type="text" id="terminalInput" class="term-input" autocomplete="off" spellcheck="false" placeholder="..." aria-label="Командная строка">
+        </div>
+      </div>
+
+      <!-- Область вывода команд (открывается внизу при вводе) -->
+      <div class="terminal-output-area" id="terminalOutputArea">
+        <div class="terminal-history" id="terminalHistory"></div>
+      </div>
+    </div>
+
+    <!-- В самом самом низу страницы надпись белым посередине мелко: trust only yourself. -->
+    <footer class="site-footer">
+      <p class="bottom-quote">trust only yourself.</p>
+    </footer>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
